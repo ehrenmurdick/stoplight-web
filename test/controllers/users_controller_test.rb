@@ -1,12 +1,6 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
-  class FakeMapper
-    attr_accessor :results
-    def all; results; end
-    def find(id); results; end
-  end
-
   def setup
     @controller.mapper = FakeMapper.new
   end

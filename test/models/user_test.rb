@@ -8,10 +8,11 @@ class UserTest < ActiveSupport::TestCase
       id: 1,
       name: "Test User"
     }.stringify_keys)
+    user.crypto = FakeCrypto
   end
 
   test '#valid_password?' do
-    user.password_hash = BCrypt::Password.create('password')
+    user.password_hash = 'password'
     assert(user.valid_password?('password'))
   end
 end

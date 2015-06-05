@@ -1,5 +1,0 @@
----
-user:
-  email:         'test@example.com'
-  name:          'Test User'
-  password_hash: <%= BCrypt::Password.create('password') %>

@@ -1,30 +1,32 @@
 require 'test_helper'
 
 class UserMapperTest < ActiveSupport::TestCase
-  attr_reader :user_mapper
-  fixtures :users
+  attr_reader :mapper
+
   def setup
-    @user_mapper = UserMapper.new
+    @mapper = UserMapper.new
+    mapper.connection = FakeConnection.new
+    mapper.connection.results = [{name: 'Test User'}]
   end
 
   test '#first returns a user' do
-    assert_kind_of(User, user_mapper.first)
-    assert_equal('Test User', user_mapper.first.name)
+    assert_kind_of(User, mapper.first)
+    assert_equal('Test User', mapper.first.name)
   end
 
   test '#all returns a list of users' do
-    user = user_mapper.all.first
+    user = mapper.all.first
     assert_kind_of(User, user)
     assert_equal('Test User', user.name)
   end
 
   test '#find returns one user by id' do
-    id = user_mapper.first.id
-    assert_equal('Test User', user_mapper.find(id).name)
+    id = mapper.first.id
+    assert_equal('Test User', mapper.find(id).name)
   end
 
   test '#find_by_email' do
-    user = user_mapper.find_by_email('test@example.com')
+    user = mapper.find_by_email('test@example.com')
     assert_equal('Test User', user.name)
   end
 end
