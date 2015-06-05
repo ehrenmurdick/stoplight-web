@@ -5,7 +5,7 @@ class User
     :name,
     :password_hash
 
-  def initialize(attrs)
+  def initialize(attrs = {})
     attrs = attrs.with_indifferent_access
     self.email         = attrs["email"]
     self.id            = attrs["id"]
