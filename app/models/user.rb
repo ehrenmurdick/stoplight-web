@@ -1,6 +1,8 @@
 class User
+  cattr_accessor :crypto
+  self.crypto = BCrypt::Password
+
   attr_accessor\
-    :crypto,
     :email,
     :id,
     :name,
@@ -12,8 +14,6 @@ class User
     self.id            = attrs["id"]
     self.name          = attrs["name"]
     self.password_hash = attrs["password_hash"]
-
-    self.crypto = BCrypt::Password
   end
 
   def valid_password?(password)

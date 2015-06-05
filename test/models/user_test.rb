@@ -8,7 +8,7 @@ class UserTest < ActiveSupport::TestCase
       id: 1,
       name: "Test User"
     }.stringify_keys)
-    user.crypto = FakeCrypto
+    User.crypto = FakeCrypto
   end
 
   test '#valid_password?' do

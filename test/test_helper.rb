@@ -12,6 +12,11 @@ class FakeConnection
     self.last_sql = sql
     results
   end
+
+  def insert_sql(sql)
+    self.last_sql = sql
+    results
+  end
 end
 
 class FakeMapper
