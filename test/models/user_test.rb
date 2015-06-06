@@ -15,8 +15,4 @@ class UserTest < ActiveSupport::TestCase
     user.password_hash = 'password'
     assert(user.valid_password?('password'))
   end
-
-  test 'failing' do
-    assert(false)
-  end
 end
