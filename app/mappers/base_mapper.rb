@@ -17,14 +17,6 @@ class BaseMapper
     define_method(:table) { Arel::Table.new(t) }
   end
 
-  def create_insert_manager
-    insert_manager_class.new(ActiveRecord::Base)
-  end
-
-  def create_update_manager
-    update_manager_class.new(ActiveRecord::Base)
-  end
-
   def insert model
     return false if model.id
     insert_manager = create_insert_manager
@@ -53,6 +45,15 @@ class BaseMapper
 
   def first q = table
     query(q.take(1)).first
+  end
+
+  private
+  def create_insert_manager
+    insert_manager_class.new(ActiveRecord::Base)
+  end
+
+  def create_update_manager
+    update_manager_class.new(ActiveRecord::Base)
   end
 
   def query arel
