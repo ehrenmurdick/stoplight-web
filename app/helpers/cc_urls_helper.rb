@@ -1,0 +1,2 @@
+module CcUrlsHelper
+end
