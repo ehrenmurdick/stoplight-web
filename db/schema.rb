@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150605202823) do
+ActiveRecord::Schema.define(version: 20150606020906) do
+
+  create_table "cc_urls", force: true do |t|
+    t.string  "url"
+    t.integer "user_id"
+  end
 
   create_table "foos", force: true do |t|
     t.datetime "created_at"
